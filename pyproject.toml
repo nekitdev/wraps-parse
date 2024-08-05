@@ -1,0 +1,114 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wraps-parse"
+version = "0.1.0"
+description = "Parsing feature of wraps."
+readme = "README.md"
+requires-python = ">= 3.8"
+license.file = "LICENSE"
+keywords = ["python", "parse"]
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Utilities",
+    "Typing :: Typed",
+]
+
+dependencies = [
+    "wraps-core >= 0.1.1",
+    "named >= 1.4.2",
+    "typing-aliases >= 1.10.1",
+    "typing-extensions >= 4.12.2",
+]
+
+[[project.authors]]
+name = "nekitdev"
+email = "nekit@nekit.dev"
+
+[project.urls]
+Homepage = "https://github.com/nekitdev/wraps-parse"
+Chat = "https://nekit.dev/chat"
+Documentation = "https://nekitdev.github.io/wraps-parse"
+Funding = "https://nekit.dev/funding"
+Issues = "https://github.com/nekitdev/wraps-parse/issues"
+Repository = "https://github.com/nekitdev/wraps-parse"
+
+[tool.uv]
+dev-dependencies = [
+    # checks
+    "ruff >= 0.5.6",
+    "mypy >= 1.11.1",
+    # tests
+    "coverage >= 7.6.0",
+    "pytest >= 8.3.2",
+    "pytest-cov >= 5.0.0",
+    "hypothesis >= 6.108.8",
+    "attrs >= 24.1.0",
+    # docs
+    "mkdocs >= 1.6.0",
+    "mkdocs-material >= 9.5.29",
+    "mkdocstrings[python] >= 0.25.1",
+    # changelogs
+    "changelogging >= 2.4.1",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+ignore = [
+    # module level import not at top of file
+    "E402",
+]
+
+[tool.mypy]
+strict = true
+
+[tool.coverage.run]
+source = ["src"]
+
+[tool.coverage.report]
+ignore_errors = true
+exclude_lines = [
+    "pragma: never",
+    "pragma: no cover",
+    "if TYPE_CHECKING",
+    "@overload",
+    "@required",
+    "raise NotImplementedError",
+    "raise AssertionError",
+    "def __repr__",
+]
+
+[tool.coverage.html]
+directory = "coverage"
+
+[tool.pytest.ini_options]
+addopts = "--cov src"
+testpaths = ["tests"]
+
+[tool.changelogging.context]
+name = "wraps-parse"
+version = "0.1.0"
+url = "https://github.com/nekitdev/wraps-parse"
+
+[tool.changelogging.formats]
+title = "[{{version}}]({{url}}/tree/v{{version}}) ({{date}})"
+fragment = "{{content}} ([#{{id}}]({{url}}/pull/{{id}}))"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
