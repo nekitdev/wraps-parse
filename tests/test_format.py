@@ -6,6 +6,7 @@ from wraps_parse import ToString, to_short_string, to_string
 from tests.base import Integer
 
 
+@frozen()
 class FormatInteger(ToString, Integer):
     def to_string(self) -> str:
         return str(self.value)
